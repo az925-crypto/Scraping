@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "anime": "node anime/anime.js",
-    "tv": "node tv/tv.js"
+    "tv": "node tv/tv.js",
+    "music": "node music/music.js"
   },
   "engines": {
     "node": ">=18"

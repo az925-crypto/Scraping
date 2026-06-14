@@ -11,6 +11,7 @@ yang jelasin detailnya. File ini cuma daftar index + aturan main umum.
 | ----------------------- | ------------------------------------------------- | ---------------------------------------------------------------- |
 | [`anime/`](./anime)     | [stream.epand.my.id](https://stream.epand.my.id)  | Data anime/donghua (cari, detail, episode, link streaming).      |
 | [`tv/`](./tv)           | [jadwaltv.net](https://jadwaltv.net)              | Jadwal acara TV nasional per channel + acara yang lagi tayang.   |
+| [`music/`](./music)     | JioSaavn (via musicapplify)                        | Cari & unduh lagu (link MP3 320kbps) dari API JioSaavn.          |
 
 > Tambah scraper baru? Bikin folder baru, isi script + `README.md`-nya,
 > lalu daftarin di tabel atas.
@@ -41,9 +42,12 @@ Cek README di tiap folder buat perintah lengkapnya.
 ├── anime/
 │   ├── README.md      <- dokumentasi khusus scraper anime
 │   └── anime.js
-└── tv/
-    ├── README.md      <- dokumentasi khusus scraper jadwal TV
-    └── tv.js
+├── tv/
+│   ├── README.md      <- dokumentasi khusus scraper jadwal TV
+│   └── tv.js
+└── music/
+    ├── README.md      <- dokumentasi khusus scraper musik
+    └── music.js
 ```
 
 ## ✍️ Konvensi nambah scraper baru
