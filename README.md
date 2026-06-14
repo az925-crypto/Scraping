@@ -1,80 +1,57 @@
-# EpanD Scraper
+# 🕸️ Scraping
 
-Snippet Node.js buat ngambil data anime/donghua yang dipakai situs
-[stream.epand.my.id](https://stream.epand.my.id).
+Kumpulan script scraping / pengambil data buat dipakai sendiri.
 
-Ternyata situsnya cuma "kulit" (SPA) — semua data datang dari **API publik**:
+Tiap scraper ditaruh di **foldernya masing-masing** dan punya **README sendiri**
+yang jelasin detailnya. File ini cuma daftar index + aturan main umum.
 
-```
-https://www.sankavollerei.web.id/anime
-```
+## 📂 Daftar scraper
 
-Jadi kita nggak perlu scraping HTML. Cukup panggil API-nya langsung.
+| Folder                  | Sumber                                            | Keterangan                                                        |
+| ----------------------- | ------------------------------------------------- | ---------------------------------------------------------------- |
+| [`anime/`](./anime)     | [stream.epand.my.id](https://stream.epand.my.id)  | Data anime/donghua (cari, detail, episode, link streaming).      |
 
-## Syarat
+> Tambah scraper baru? Bikin folder baru, isi script + `README.md`-nya,
+> lalu daftarin di tabel atas.
 
-- Node.js **18+** (pakai `fetch` bawaan, tanpa dependency).
+## 🚀 Cara pakai umum
 
-## Cara pakai (terminal)
+Kebanyakan script di sini pakai **Node.js 18+** (biar bisa pakai `fetch`
+bawaan tanpa install apa-apa). Jalankan dari root repo:
 
 ```bash
-node epand.js home                 # konten halaman utama
-node epand.js ongoing [halaman]    # daftar anime ongoing
-node epand.js search <kata>        # cari anime (1 kata paling akurat)
-node epand.js detail <animeId>     # detail + daftar episode
-node epand.js episode <episodeId>  # link streaming + server + download
+node <folder>/<script>.js [perintah] [argumen]
 ```
 
-**Alur biasa:** `search` → ambil `animeId` → `detail` → ambil `episodeId`
-→ `episode` → dapat `defaultStreamingUrl` (tinggal buka di browser).
+Contoh:
 
-## Pakai sebagai modul
-
-```js
-import { search, getDetail, getEpisode } from "./epand.js";
-
-const { animeList } = await search("wistoria");
-const detail = await getDetail(animeList[0].animeId);
-const ep = await getEpisode(detail.episodeList[0].episodeId);
-console.log(ep.defaultStreamingUrl); // link iframe siap diputar
+```bash
+node anime/anime.js search wistoria
 ```
 
-## Daftar endpoint API
+Cek README di tiap folder buat perintah lengkapnya.
 
-Semua diawali base `https://www.sankavollerei.web.id/anime` dan dibungkus
-`{ status, data, ... }`.
+## 🧱 Struktur repo
 
-### Anime
+```
+.
+├── README.md          <- kamu di sini (index semua scraper)
+├── package.json       <- config bersama (type: module)
+└── anime/
+    ├── README.md      <- dokumentasi khusus scraper anime
+    └── anime.js
+```
 
-| Fungsi          | Path                          |
-| --------------- | ----------------------------- |
-| home            | `/home`                       |
-| ongoing         | `/ongoing-anime?page=N`       |
-| complete        | `/complete-anime?page=N`      |
-| jadwal rilis    | `/schedule`                   |
-| cari            | `/search/<kata>`              |
-| detail anime    | `/anime/<animeId>`            |
-| episode         | `/episode/<episodeId>`        |
-| link per server | `/server/<serverId>`          |
-| daftar genre    | `/genre`                      |
-| anime per genre | `/genre/<genreId>?page=N`     |
+## ✍️ Konvensi nambah scraper baru
 
-### Donghua
+1. Bikin folder dengan nama yang jelas, mis. `berita/`, `lowongan/`.
+2. Taruh script utama di dalamnya (mis. `berita/berita.js`).
+3. Bikin `berita/README.md` — jelasin sumber, cara pakai, & endpoint/struktur data.
+4. Daftarin di tabel **Daftar scraper** di atas.
+5. Usahakan tanpa dependency kalau bisa; kalau perlu, catat di README folder itu.
 
-| Fungsi   | Path                              |
-| -------- | --------------------------------- |
-| ongoing  | `/donghua/ongoing/<page>`         |
-| completed| `/donghua/completed/<page>`       |
-| schedule | `/donghua/schedule`               |
-| detail   | `/donghua/detail/<id>`            |
-| episode  | `/donghua/episode/<id>`           |
-| cari     | `/donghua/search/<kata>`          |
+## ⚠️ Catatan
 
-## Catatan
-
-- **Search cuma akurat 1 kata.** Query multi-kata bikin server upstream
-  balas HTTP 500, jadi `search()` otomatis pakai kata pertama lalu nyaring
-  hasil secara lokal.
-- API butuh header `User-Agent` + `Referer` (sudah diatur di `epand.js`).
-- Sumber data aslinya dari otakudesu, jadi kualitas/ketersediaan ngikut sana.
-- Buat dipakai sendiri / belajar. Hormati hak cipta & ketentuan layanan ya.
+Semua ini buat keperluan pribadi / belajar. Hormati hak cipta, `robots.txt`,
+dan ketentuan layanan situs sumber. Jangan spam request (kasih jeda kalau
+ngambil banyak data).

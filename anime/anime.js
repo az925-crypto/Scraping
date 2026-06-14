@@ -1,17 +1,17 @@
-// epand.js — client kecil buat ngambil data anime/donghua dari API
+// anime/anime.js — client kecil buat ngambil data anime/donghua dari API
 // yang dipakai situs https://stream.epand.my.id
 //
 // Tidak butuh dependency apa pun. Cukup Node.js 18+ (pakai fetch bawaan).
 //
 // Cara pakai (CLI):
-//   node epand.js search naruto
-//   node epand.js detail borot-sub-indo
-//   node epand.js episode btr-ng-episode-293-sub-indo
-//   node epand.js ongoing
-//   node epand.js home
+//   node anime/anime.js search naruto
+//   node anime/anime.js detail borot-sub-indo
+//   node anime/anime.js episode btr-ng-episode-293-sub-indo
+//   node anime/anime.js ongoing
+//   node anime/anime.js home
 //
 // Atau import sebagai modul:
-//   import { search, getDetail, getEpisode } from "./epand.js";
+//   import { search, getDetail, getEpisode } from "./anime/anime.js";
 
 const BASE = "https://www.sankavollerei.web.id/anime";
 

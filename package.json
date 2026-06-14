@@ -1,13 +1,10 @@
 {
-  "name": "epand-scraper",
+  "name": "scraping",
   "version": "0.1.0",
-  "description": "Ambil data anime/donghua dari API yang dipakai stream.epand.my.id",
+  "description": "Kumpulan script scraping buat dipakai sendiri",
   "type": "module",
-  "main": "epand.js",
   "scripts": {
-    "start": "node epand.js",
-    "home": "node epand.js home",
-    "ongoing": "node epand.js ongoing"
+    "anime": "node anime/anime.js"
   },
   "engines": {
     "node": ">=18"
