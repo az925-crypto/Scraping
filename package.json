@@ -1,0 +1,15 @@
+{
+  "name": "epand-scraper",
+  "version": "0.1.0",
+  "description": "Ambil data anime/donghua dari API yang dipakai stream.epand.my.id",
+  "type": "module",
+  "main": "epand.js",
+  "scripts": {
+    "start": "node epand.js",
+    "home": "node epand.js home",
+    "ongoing": "node epand.js ongoing"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
