@@ -4,7 +4,8 @@
   "description": "Kumpulan script scraping buat dipakai sendiri",
   "type": "module",
   "scripts": {
-    "anime": "node anime/anime.js"
+    "anime": "node anime/anime.js",
+    "tv": "node tv/tv.js"
   },
   "engines": {
     "node": ">=18"

@@ -10,6 +10,7 @@ yang jelasin detailnya. File ini cuma daftar index + aturan main umum.
 | Folder                  | Sumber                                            | Keterangan                                                        |
 | ----------------------- | ------------------------------------------------- | ---------------------------------------------------------------- |
 | [`anime/`](./anime)     | [stream.epand.my.id](https://stream.epand.my.id)  | Data anime/donghua (cari, detail, episode, link streaming).      |
+| [`tv/`](./tv)           | [jadwaltv.net](https://jadwaltv.net)              | Jadwal acara TV nasional per channel + acara yang lagi tayang.   |
 
 > Tambah scraper baru? Bikin folder baru, isi script + `README.md`-nya,
 > lalu daftarin di tabel atas.
@@ -37,9 +38,12 @@ Cek README di tiap folder buat perintah lengkapnya.
 .
 ├── README.md          <- kamu di sini (index semua scraper)
 ├── package.json       <- config bersama (type: module)
-└── anime/
-    ├── README.md      <- dokumentasi khusus scraper anime
-    └── anime.js
+├── anime/
+│   ├── README.md      <- dokumentasi khusus scraper anime
+│   └── anime.js
+└── tv/
+    ├── README.md      <- dokumentasi khusus scraper jadwal TV
+    └── tv.js
 ```
 
 ## ✍️ Konvensi nambah scraper baru
